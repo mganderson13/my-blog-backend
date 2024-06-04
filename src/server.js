@@ -39,7 +39,7 @@ app.post('/api/articles/:name/comments', async (req, res) => {
     await db.collection('articles').updateOne({ name }, {
         $push: { comments: { postedBy, text } },
     });
-    
+
     const article = await db.collection('articles').findOne({ name });
 
     if (article) {
@@ -62,4 +62,3 @@ app.listen(8000, () => {
     console.log("Server is listening on port 8000");
 });
 });
-
